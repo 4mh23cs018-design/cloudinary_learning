@@ -2,12 +2,15 @@ import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # ===== CONFIGURATION =====
 cloudinary.config(
-    cloud_name="YOUR_CLOUD_NAME",
-    api_key="YOUR_API_KEY",
-    api_secret="YOUR_API_SECRET"
+    cloud_name=os.getenv("CLOUDINARY_CLOUD_NAME"),
+    api_key=os.getenv("CLOUDINARY_API_KEY"),
+    api_secret=os.getenv("CLOUDINARY_API_SECRET")
 )
 
 def upload_file(file_path):
@@ -52,5 +55,5 @@ def upload_file(file_path):
 
 
 if __name__ == "__main__":
-    file_to_upload = input("Enter file path: ").strip()
+    file_to_upload = r"C:\Users\STUDENT\Documents\cloudinary_learning\image.png"    
     upload_file(file_to_upload)
